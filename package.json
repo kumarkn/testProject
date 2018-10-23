@@ -1,0 +1,50 @@
+{
+  "name": "cogs-mx",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "Kenneth Espinal Vazquez",
+    "email": "Jonathan.Espinal@walmart.com",
+    "url": ""
+  },
+  "contributors": [],
+  "files": [
+    "server",
+    "src",
+    "lib",
+    "dist"
+  ],
+  "main": "lib/server/index.js",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://gecgithub01.walmart.com/cogs-mx"
+  },
+  "engines": {
+    "node": ">= 4 <= 8",
+    "npm": ">= 3 <= 5"
+  },
+  "scripts": {
+    "build": "clap build",
+    "prod-start": "NODE_ENV=production clap -n -x electrode/build prod",
+    "start": "clap dev",
+    "test": "clap check",
+    "coverage": "clap check",
+    "prod": "echo 'Starting standalone server in PROD mode'; NODE_ENV=production node ./lib/server/",
+    "heroku-postbuild": "clap build",
+    "prestart": "clap build",
+    "publish-static": "pronto-js -f \"dist/**/{*.js,*.css,*.woff,*.eot,*.ttf,*.jpg,*.jpeg,*.png,*.gif}\" -o \"config/assets.json\""
+  },
+  "dependencies": {
+    "@walmart/electrode-wml-app": "^2.0.0",
+    "electrode-archetype-react-app": "^5.0.2",
+    "redux": "^4.0.1",
+    "redux-saga": "^0.16.2"
+  },
+  "devDependencies": {
+    "@material-ui/core": "^3.2.2",
+    "electrode-archetype-react-app-dev": "^5.0.2"
+  },
+  "private": true
+}
