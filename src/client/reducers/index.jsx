@@ -1,30 +1,88 @@
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
+import initialState from './initialstate';
+import { FILTER_DATA_RECEIVED, FILTER_UPDATE, FILTER_DISABLE, FILTER_RESET, APPLY_FILTER_SUCCESS } from '../dictionary';
 
-const checkBox = (store, action) => {
-  if (action.type === "TOGGLE_CHECK") {
-    return {
-      checked: !store.checked
-    };
-  }
-
-  return store || {checked: false};
+const defaultState = {
+  loading: true,
+  result: null,
+  error: null
 };
 
-const number = (store, action) => {
-  if (action.type === "INC_NUMBER") {
-    return {
-      value: store.value + 1
-    };
-  } else if (action.type === "DEC_NUMBER") {
-    return {
-      value: store.value - 1
-    };
+const filter = (state = initialState, action) => {
+
+  switch(action.type) {
+    case FILTER_DATA_RECEIVED:
+        console.log(action);
+        return Object.assign({}, state, {
+            [action.context]: Object.assign({}, state[action.context], {
+              options: action.data
+            })
+        })
+
+    case FILTER_UPDATE:
+        return Object.assign({}, state, {
+            [action.context]: Object.assign({}, state[action.context], {
+              selectedOption: action.value
+            })
+        })
+
+    case FILTER_RESET:
+        return Object.assign({}, state, {
+            dept: Object.assign({}, state.dept, {
+              selectedOption: [],
+              disabled: false
+            }),
+            cat: Object.assign({}, state.cat, {
+              selectedOption: [],
+              disabled: true,
+              options: []
+            }),
+            vendor: Object.assign({}, state.vendor, {
+              selectedOption: [],
+              disabled: false
+            }),
+            year: Object.assign({}, state.year, {
+              selectedOption: [],
+              disabled: false
+            })
+        })
+
+    case FILTER_DISABLE:
+        if(action.context){
+          return Object.assign({}, state, {
+              [action.context]: Object.assign({}, state[action.context], {
+                disabled: (action.context === 'vendor')
+              })
+          })
+        }else{
+          return Object.assign({}, state, {
+              dept: Object.assign({}, state.dept, {
+                disabled: true
+              }),
+              cat: Object.assign({}, state.cat, {
+                disabled: true
+              })
+          })
+
+      }
+
+    default:
+        return state
   }
 
-  return store || {value: 0};
+};
+
+const metrices = (state = defaultState, action) => {
+
+  switch(action.type) {
+    case APPLY_FILTER_SUCCESS:
+          return Object.assign({}, state, {loading: false, result: action.data, error: null});
+    default:
+          return state;
+  }
 };
 
 export default combineReducers({
-  checkBox,
-  number
+  filter,
+  metrices
 });

@@ -19,12 +19,14 @@
         "pathPrefix": "dist"
       }
     },
+
     "webapp": {
       "module": "@walmart/electrode-react-webapp2",
       "options": {
-        "pageTitle": "test",
+        "pageTitle": "COGS International",
         "paths": {
           "/{args*}": {
+            
             "content": {
               "module": "./{{env.APP_SRC_DIR}}/server/views/index-view"
             }

@@ -1,35 +1,48 @@
-/*
- * This is a demo component the Eletrode app generator included
- * to show using Skeleton CSS lib (named base.css) and Redux
- * store for display HTML elements and managing states.
- *
- * To start your own app, please replace or remove these files:
- *
- * - this file (home.jsx)
- * - demo-buttons.jsx
- * - demo-pure-states.jsx
- * - demo-states.jsx
- * - reducers/index.jsx
- * - styles/*.css
- *
- */
-
 import React from "react";
 import "../styles/normalize.css";
 import "../styles/raleway.css";
-import skeleton from "../styles/skeleton.css";
-import custom from "../styles/custom.css";
-import electrodePng from "../images/electrode.png";
-/**/
+import general from '../styles/general.css';
 
-export default () =>
-  <div className={custom.container}>
-    {/**/}
+import Layout from "./commonComponents/appLayout/Layout";
+import Footer from "./commonComponents/footer/Footer";
 
-    <section className={custom.header}>
-      <h2 className={skeleton.title}>
-        Hello from {" "}
-        <a>{"Electrode"} <img src={electrodePng} /></a>
-      </h2>
-    </section>
-  </div>;
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
+
+import 'typeface-roboto';
+import BusinessOverviewFilters from "./filters/BusinessOverviewFilters";
+
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className={general.grayBackgroud}>
+       <div>
+          <div>
+            <Layout/>
+          </div>
+          <div>
+            {this.props.children}
+          </div>
+          <div>
+            <Footer/>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+  };
+}
+
+Home.propTypes = {
+  children: PropTypes.object.isRequired
+};
+
+export default connect(mapStateToProps)(Home);

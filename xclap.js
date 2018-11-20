@@ -8,13 +8,13 @@ process.env.SERVER_ES6 = true;
  * Enable webpack's NodeSourcePlugin to simulate NodeJS libs in browser
  */
 
-// process.env.ENABLE_NODESOURCE_PLUGIN = true;
+process.env.ENABLE_NODESOURCE_PLUGIN = true;
 
 /*
  * Use PhantomJS to run your Karma Unit tests.  Default is "chrome" (Chrome Headless)
  */
 
-// process.env.KARMA_BROWSER = "phantomjs";
+process.env.KARMA_BROWSER = "phantomjs";
 
 /*
  * Turn off using electrode-webpack-reporter to show visual report of your webpack

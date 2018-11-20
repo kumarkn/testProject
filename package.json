@@ -1,6 +1,6 @@
 {
   "name": "cogs-mx",
-  "version": "0.0.1",
+  "version": "1.0.99",
   "description": "",
   "homepage": "",
   "author": {
@@ -37,14 +37,28 @@
     "publish-static": "pronto-js -f \"dist/**/{*.js,*.css,*.woff,*.eot,*.ttf,*.jpg,*.jpeg,*.png,*.gif}\" -o \"config/assets.json\""
   },
   "dependencies": {
+    "@amcharts/amcharts4": "^4.0.0-beta.66",
+    "@material-ui/core": "^3.3.2",
+    "@material-ui/icons": "^3.0.1",
+    "@walmart/electrode-sso-plugin": "^1.0.0",
     "@walmart/electrode-wml-app": "^2.0.0",
     "electrode-archetype-react-app": "^5.0.2",
+    "phantomjs-prebuilt": "^2.1.16",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.6.0",
+    "react-select": "^2.1.1",
+    "react-swipeable-views": "^0.13.0",
+    "react-virtualized": "^9.21.0",
     "redux": "^4.0.1",
-    "redux-saga": "^0.16.2"
+    "redux-saga": "^0.16.2",
+    "typeface-roboto": "0.0.54"
   },
   "devDependencies": {
-    "@material-ui/core": "^3.2.2",
-    "electrode-archetype-react-app-dev": "^5.0.2"
+    "@babel/runtime": "7.0.0-beta.55",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "classnames": "^2.2.6",
+    "electrode-archetype-react-app-dev": "^5.0.2",
+    "xclap": "^0.2.24"
   },
   "private": true
 }
